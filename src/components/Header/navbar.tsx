@@ -18,7 +18,6 @@ export default function Navbar() {
         {userSession && (
           <>
             <MenuItem label={'Mis Reservas'} to="/reservas"/>
-            <MenuItem label={'Crear un anuncio'} to="/create/listing"/>
             <li className="text-gray-600 hover:text-gray-300 cursor-pointer" onClick={() => {
               signOut()
               window.location.reload()

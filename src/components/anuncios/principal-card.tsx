@@ -7,8 +7,13 @@ import { CiLocationOn } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { CiCalendar } from "react-icons/ci";
 import Separator from "../utilities/separator";
+import { CreateReservationDialogBasic } from "../pages/reservas/CreateReservationDialog";
+import useReservation from "@/hooks/useReservation";
+import { useUser } from "@/hooks/useUser";
 
 export default function PrincipalCard ({listing}: {listing: ListingWithUser}) {
+  const {createNew} = useReservation()
+  const {userSession} = useUser()
   return (
     <Card className="w-full p-0 bg-secondary border-0 overflow-hidden mt-2">
       <CardContent className="p-0 overflow-hidden">
@@ -38,7 +43,17 @@ export default function PrincipalCard ({listing}: {listing: ListingWithUser}) {
           <Separator/>
           <div className="flex justify-between gap-2">
             <Button variant={"outline"} className="bg-gray-800 text-white">Mas información</Button>
-            <Button className="bg-primary-1">Checar disponibilidad</Button>
+            {userSession && (
+              <CreateReservationDialogBasic
+                id_anuncio={listing.id_anuncio}
+                trigger={<Button className="bg-primary-1">Checar disponibilidad</Button>} // o un <div> con asChild
+                onSubmit={(reservation) => {
+                  createNew(reservation)
+                }}
+              />
+            )}
+            
+            
           </div>
         </div>
       </CardContent>

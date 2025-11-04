@@ -34,11 +34,11 @@ export default function ReservasList () {
   }, [userSession])
   
   return (
-    <div className={items.length === 0 ? "w-full": "grid grid-cols-4"}>
+    <div className={items.length === 0 ? "w-full": "grid grid-cols-4 wrapper"}>
       {items.length === 0 && <EmptyElement/>}
       {loading
         ? Array.from({ length: 6 }).map((_, i) => <AnnouncementCardSkeleton key={i} />)
-        : items.map((item) => <AnnouncementCard key={item.id_anuncio} item={item} />)}
+        : items.map((item) => <AnnouncementCard isList={true} key={item.id_anuncio} item={item} />)}
       {loading && <span className="sr-only">Cargando anuncios…</span>}
     </div>
   )
