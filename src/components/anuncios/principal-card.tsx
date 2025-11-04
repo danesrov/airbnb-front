@@ -10,7 +10,7 @@ import Separator from "../utilities/separator";
 
 export default function PrincipalCard ({listing}: {listing: ListingWithUser}) {
   return (
-    <Card className="w-full p-0 bg-secondary border-0 overflow-hidden">
+    <Card className="w-full p-0 bg-secondary border-0 overflow-hidden mt-2">
       <CardContent className="p-0 overflow-hidden">
         <div className="relative h-32">
           <img src={HouseImg} alt="House" className="absolute size-full object-cover" />

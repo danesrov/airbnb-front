@@ -5,9 +5,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useListings } from "@/hooks/useListings";
 import type { ListingWithUser } from "@/types/listing";
 import { useEffect, useState } from "react";
+import { FaHouseFlag } from "react-icons/fa6";
 
 
-function AnnouncementCardSkeleton() {
+export function AnnouncementCardSkeleton() {
   return (
     <div className="rounded-md border p-3">
       {/* imagen */}
@@ -55,10 +56,25 @@ export default function HomeFeed() {
             {loading && <span className="sr-only">Cargando anuncios…</span>}
           </div>
         </div>
-        <div></div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-slate-800 gap-2 flex items-center rounded-2xl p-4 max-h-32 cursor-pointer border-2 border-transparent hover:border-2 hover:border-emerald-800 transition-all">
+            <div className="size-12 flex items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+              <FaHouseFlag />
+            </div>
+            <span className="text-white font-extrabold">Crear un anuncio</span>
+          </div>
+          <div className="bg-slate-900 gap-2 flex items-center rounded-2xl p-4 max-h-32 cursor-pointer border-2 border-transparent hover:border-2 hover:border-cyan-800 transition-all">
+            <div className="size-12 flex items-center justify-center rounded-2xl bg-cyan-100 text-cyan-600">
+              <FaHouseFlag />
+            </div>
+            <span className="text-white font-extrabold">Ver mis reservas</span>
+          </div>
+        </div>
         {
           listingWithUser && (
             <div className="sticky top-0">
+              <Heading heading="Lo mas reservado" headingType="h2"/>
+              <span className="text-gray-400 text-sm mb-2">Una experiencia unica</span>
               <PrincipalCard listing={listingWithUser} key={listingWithUser.id_anuncio}/>
             </div>
           )

@@ -16,10 +16,14 @@ export default function Navbar() {
       <ul className="flex items-center gap-4">
         <MenuItem label={'Principal'} to="/"/>
         {userSession && (
-          <li className="text-gray-600 hover:text-gray-300 cursor-pointer" onClick={() => {
-            signOut()
-            window.location.reload()
-          }}>Salir</li>
+          <>
+            <MenuItem label={'Mis Reservas'} to="/reservas"/>
+            <MenuItem label={'Crear un anuncio'} to="/create/listing"/>
+            <li className="text-gray-600 hover:text-gray-300 cursor-pointer" onClick={() => {
+              signOut()
+              window.location.reload()
+            }}>Salir</li>
+          </>
         )}
       </ul>
     </nav>
